@@ -1,4 +1,5 @@
 package vasanth.springframework.spring5webapp.domain;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 @javax.persistence.Entity
@@ -11,13 +12,12 @@ public class Book {
     @javax.persistence.ManyToMany
     @javax.persistence.JoinTable(name="author_book",joinColumns=@javax.persistence.JoinColumn(name="book_id"),
             inverseJoinColumns=@javax.persistence.JoinColumn(name="author_id"))
-    private Set<Author>authors;
+    private Set<Author>authors=new HashSet<>();
 
     public Book() {}
-    public Book(String title,String isBn,Set<Author>authors){
+    public Book(String title,String isBn){
         this.title=title;
         this.isBn=isBn;
-        this.authors=authors;
     }
 
     @Override
