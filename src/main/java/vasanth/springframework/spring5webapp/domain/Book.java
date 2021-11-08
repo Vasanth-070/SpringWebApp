@@ -1,4 +1,5 @@
 package vasanth.springframework.spring5webapp.domain;
+import javax.persistence.ManyToOne;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -9,6 +10,9 @@ public class Book {
     private long id;
     private String title;
     private String isBn;
+    @ManyToOne
+    private Publisher publisher;
+
     @javax.persistence.ManyToMany
     @javax.persistence.JoinTable(name="author_book",joinColumns=@javax.persistence.JoinColumn(name="book_id"),
             inverseJoinColumns=@javax.persistence.JoinColumn(name="author_id"))
@@ -36,11 +40,19 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
+                "title='" + title + '\'' +
                 ", isBn='" + isBn + '\'' +
+                ", publisher=" + publisher +
                 ", authors=" + authors +
                 '}';
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     public java.lang.String getTitle() {
