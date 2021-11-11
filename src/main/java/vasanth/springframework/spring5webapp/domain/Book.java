@@ -42,9 +42,8 @@ public class Book {
         return "Book{" +
                 "title='" + title + '\'' +
                 ", isBn='" + isBn + '\'' +
-                ", publisher=" + publisher +
-                ", authors=" + authors +
-                '}';
+                ", publisher=" + publisher
+                ;
     }
 
     public Publisher getPublisher() {
